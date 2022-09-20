@@ -1,0 +1,117 @@
+CREATE TABLE cidade
+(
+  
+codigo integer NOT NULL,
+  
+nome character varying(150),
+  
+CONSTRAINT cidade_pkey PRIMARY KEY (codigo)
+);
+
+CREATE TABLE loja
+(
+  
+codigo integer NOT NULL,
+ 
+nome character varying(150),
+  
+codigo_cidade integer,
+  
+CONSTRAINT pk_loja PRIMARY KEY (codigo),
+  
+CONSTRAINT fk_loja FOREIGN KEY (codigo_cidade)
+ 
+ REFERENCES cidade (codigo) 
+);
+
+CREATE TABLE cliente
+(
+  
+cpf character varying(11) NOT NULL,
+  
+nome character varying(150),
+  
+endereco character varying(200),
+  
+codigo_cidade integer,
+  
+CONSTRAINT pk_cliente PRIMARY KEY (cpf),
+  
+CONSTRAINT fk_cidade_cli FOREIGN KEY 
+      (codigo_cidade)
+ REFERENCES cidade (codigo) 
+);
+
+CREATE TABLE vendedor
+(
+  cpf character varying(11) NOT NULL,
+  nome character varying(150),
+  CONSTRAINT vendedor_pkey PRIMARY KEY (cpf)
+);
+
+CREATE TABLE produto
+(
+  
+codigo integer NOT NULL,
+  
+descricao character varying(150),
+  
+preco numeric(10,2),
+  
+CONSTRAINT produto_pkey PRIMARY KEY (codigo)
+)
+;
+
+CREATE TABLE pedido
+(
+  
+numero integer NOT NULL,
+ data date,
+  
+cpf_cliente character varying(11),
+  
+cpf_vendedor character varying(11),
+  
+CONSTRAINT pedido_pkey PRIMARY KEY (numero),
+
+CONSTRAINT fk_cli FOREIGN KEY (cpf_cliente)
+  
+REFERENCES cliente (cpf),
+ 
+ CONSTRAINT fk_vend FOREIGN KEY (cpf_vendedor)
+  
+  REFERENCES vendedor (cpf) 
+)
+;
+
+CREATE TABLE contem
+(
+  
+numero_pedido integer,
+ codigo_produto integer,
+  
+quantidade integer,
+  
+CONSTRAINT fk_pedi FOREIGN KEY (numero_pedido)
+
+ REFERENCES pedido (numero), 
+ 
+CONSTRAINT fk_produ FOREIGN KEY (codigo_produto)
+
+   REFERENCES produto (codigo) 
+)
+;
+
+CREATE TABLE alocacao
+(
+  
+codigo_loja integer,
+ cpf_vendedor character varying(11),
+  
+CONSTRAINT fk_loj FOREIGN KEY (codigo_loja)
+
+REFERENCES loja (codigo),   
+CONSTRAINT fk_vend FOREIGN KEY (cpf_vendedor)
+
+      REFERENCES vendedor (cpf) 
+);
