@@ -1,0 +1,33 @@
+-- Quantos pedidos foram feitos pelo João?			
+select count(pedido.numero)
+from pedido, cliente
+where cliente.nome ilike 'joão' and
+	cliente.cpf = pedido.cpf_cliente
+
+-- Qual o valor total dos pedidos feitos pelo João?
+select sum(contem.quantidade*produto.preco)
+from pedido, cliente, contem, produto
+where cliente.nome ilike 'joão' and
+	cliente.cpf = pedido.cpf_cliente and
+	pedido.numero = contem.numero_pedido and
+	produto.codigo = contem.codigo_produto
+
+-- Quais foram os pedidos feitos pelo João, agrupados por número do pedido:
+select pedido.numero, sum(contem.quantidade*produto.preco)
+from pedido, cliente, contem, produto
+where cliente.nome ilike 'joão' and
+	cliente.cpf = pedido.cpf_cliente and
+	pedido.numero = contem.numero_pedido and
+	produto.codigo = contem.codigo_produto
+group by pedido.numero
+
+-- Qual a média dos valores dos pedidos feitos pelo João?
+SELECT sum(contem.quantidade*produto.preco)/(SELECT count(pedido.numero)
+											FROM pedido, cliente
+											WHERE cliente.nome ilike 'João' and
+		   									cliente.cpf = pedido.cpf_cliente )
+											FROM pedido, cliente, contem, produto
+WHERE cliente.nome ilike 'João' and
+		   	cliente.cpf = pedido.cpf_cliente and
+		    pedido.numero = contem.numero_pedido and
+		   	produto.codigo = contem.codigo_produto
