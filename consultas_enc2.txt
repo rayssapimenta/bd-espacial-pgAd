@@ -1,0 +1,45 @@
+1. Qual o nome das lojas localizadas em Porto Velho?
+
+2. Quantos pedidos foram realizados pelo cliente João?
+
+3. Quais foram os clientes que realizaram pedidos nos meses de janeiro e feveireiro de 2012?
+
+4. Quais foram os produtos vendidos nos meses de janeiro e fevereiro de 2012?
+
+5. Quais foram os produtos comprados pelo cliente João?
+
+6. Qual a média dos valores dos pedidos feitos pelo cliente João?
+
+7. Relação nominal dos vendedores cadastrados:
+
+8. Nome e preço dos produtos cadastrados:
+
+9. Listar clientes por ordem alfabética
+
+10. Verificar quantidade de produtos cadastrados
+
+11. Verificar os CPF dos clientes
+
+12. Verificar o CPF do cliente Pedro
+
+13. Qual o nome da loja cujo código é 4?
+		
+14. Quais foram os produtos vendidos no pedido cujo numero é 4?
+
+15. Listagem dos clientes que residem em Cacoal
+
+16. Qual o valor total do pedido número 8?
+
+17. Relação de vendedores e respectivas lojas em que estão alocadas
+
+18. Quais foram os clientes atendidos pela vendedora Josefa?
+
+19. Quantidade de vendedores por loja
+
+20. Quais foram os 3 clientes que mais compraram (valores totais)?
+
+21. Quais foram os produtos mais vendidos (quantidades)?
+
+22. Relatório de vendas por data
+
+23. Relatório de vendas agrupadas por mês
