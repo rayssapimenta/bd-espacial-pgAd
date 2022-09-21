@@ -5,10 +5,9 @@
  vendedor.cpf = alocacao.cpf_vendedor and
  loja.codigo = alocacao.codigo_loja and
  loja.codigo_cidade = cidade.codigo;
- /*  pedido contem produto cliente, mais de uma tabela > junção*/
  
- 
- 
+--  pedido contem produto cliente, mais de uma tabela > junção
+
 select pedido.numero, sum(produto.preco * contem.quantidade) as total
 from pedido, cliente, contem, produto
 where cliente.cpf = pedido.cpf_cliente and
@@ -17,10 +16,7 @@ produto.codigo = contem.codigo_produto and
 cliente.nome ilike 'João'
 group by pedido.numero;
 
-/*
-2- Listar os nomes dos vendedores alocados nas lojas da cidade de Porto Velho
-*/
-
+--2- Listar os nomes dos vendedores alocados nas lojas da cidade de Porto Velho
 
 select vendedor.nome
 from vendedor, cidade, loja, alocacao

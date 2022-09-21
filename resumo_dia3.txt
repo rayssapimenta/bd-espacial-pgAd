@@ -1,0 +1,13 @@
+1- criar conexão com o banco pelo qgis
+2- na extenção de banco de dados, importar os shapes
+     shp2pgsql -h localhost -s 4674 -f RO_UF_2021.shp > 
+
+
+
+
+
+3- abrir o bundle e criar conexao
+
+
+
+
