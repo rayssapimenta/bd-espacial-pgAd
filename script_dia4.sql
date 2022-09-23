@@ -58,24 +58,44 @@ from pontos_grs_sedes_bases a, gerencias_regionais b
 
 where b.jurisd ilike 'GR 1 - Norte' and
 
-st_contains(b.geom, a.geom)
--- 5  - 
-select count(a.id)
-from embargos_icmbio_atualizado a, gerencias_regionais b
-where b.jurisd ilike 'GR 1 - Norte' and
-st_intersects(a.geom, b.geom)
--- 6 - 
-select a.id, a.geom
-from embargos_icmbio_atualizado a, conservation_units_legal_amazon b
-where b.nome ilike 'Floresta Nacional do Jamanxim' and
-st_intersects(a.geom, b.geom)
-
-select updategeometrysrid('embargos_icmbio_atualizado', 'geom',4674);
-*/
---7- selecionei um retangulo e apontei uma br,  e vou pegar todas as estradas que chegam do lado esquerdo
-select a.id, a.geom
-from trecho_rodoviario_ro a, trecho_rodoviario_ro b
-where b.nome ilike 'km 70' and
-st_intersects(a.geom, st_setsrid(st_makebox2d(st_point(-62.2996, -9.7022),
-st_point(-62.6681, -10.0191)), 4674)) and 
+st_contains(b.geom, a.geom)
+
+-- 5  - 
+
+select count(a.id)
+
+from embargos_icmbio_atualizado a, gerencias_regionais b
+
+where b.jurisd ilike 'GR 1 - Norte' and
+
+st_intersects(a.geom, b.geom)
+
+-- 6 - 
+
+select a.id, a.geom
+
+from embargos_icmbio_atualizado a, conservation_units_legal_amazon b
+
+where b.nome ilike 'Floresta Nacional do Jamanxim' and
+
+st_intersects(a.geom, b.geom)
+
+
+
+select updategeometrysrid('embargos_icmbio_atualizado', 'geom',4674);
+
+*/
+
+--7- selecionei um retangulo e apontei uma br,  e vou pegar todas as estradas que chegam do lado esquerdo
+
+select a.id, a.geom
+
+from trecho_rodoviario_ro a, trecho_rodoviario_ro b
+
+where b.nome ilike 'km 70' and
+
+st_intersects(a.geom, st_setsrid(st_makebox2d(st_point(-62.2996, -9.7022),
+
+st_point(-62.6681, -10.0191)), 4674)) and 
+
 a.geom &< b.geom
